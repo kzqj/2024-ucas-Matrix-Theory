@@ -93,19 +93,19 @@ $(sigma(epsilon_1), sigma(epsilon_2), ..., sigma(epsilon_n)) = (epsilon_1, epsil
 
 $forall alpha in V$
 
-$ alpha = (epsilon_1, epsilon_2, ..., epsilon_n) vec(x_1, x_2, ..., x_n) = (epsilon_1, epsilon_2, ..., epsilon_n) X $
+$ alpha = (epsilon_1, epsilon_2, ..., epsilon_n) vec(x_1, x_2, ..., x_n) = (epsilon_1, epsilon_2, ..., epsilon_n) x $
 
-则 $sigma(alpha) = (sigma(epsilon_1), sigma(epsilon_2), ..., sigma(epsilon_n)) vec(x_1, x_2, dots.v, x_n) = (epsilon_1, epsilon_2, ..., epsilon_n) A X$
+则 $sigma(alpha) = (sigma(epsilon_1), sigma(epsilon_2), ..., sigma(epsilon_n)) vec(x_1, x_2, dots.v, x_n) = (epsilon_1, epsilon_2, ..., epsilon_n) A x$
 
-同理，$tau(alpha) = (epsilon_1, epsilon_2, ..., epsilon_n) B X$
+同理，$tau(alpha) = (epsilon_1, epsilon_2, ..., epsilon_n) B x$
 
 由 $|sigma(alpha)| = |tau(alpha)|
 arrow.l.r.double
 angle.l sigma(alpha), sigma(alpha) angle.r  = angle.l tau(alpha), tau(alpha) angle.r$ 有
 
-$X^T A^T vec(epsilon_1, epsilon_2, dots.v, epsilon_n) (
+$x^T A^T vec(epsilon_1, epsilon_2, dots.v, epsilon_n) (
     epsilon_1, epsilon_2, ..., epsilon_n
-  ) A X = X^T A^T A X = X^T B^T B X arrow.r.double A^T A = B^T B$
+  ) A x = x^T A^T A x = x^T B^T B x arrow.r.double A^T A = B^T B$
 
 TODO:
 
@@ -145,7 +145,7 @@ $
 
 要证 $sigma$ 为恒等变换，只需证 $A = I$
 
-由 $sigma$ 为恒等变换， $A$ 为对称矩阵
+由 $sigma$ 为对称变换，可得 $A$ 为对称矩阵
 
 由 $A$ 为正定矩阵，可得$A$ 的特征值均为正实数
 
