@@ -52,3 +52,32 @@ $H_2 H_1 A = mat(1, 1, 1; 0, 5, 2; 0, 0, -1) = R$
 $Q = H_1^(-1) H_2^(-1) = H_1 H_2 = mat(0, 4/5, 3/5; 1, 0, 0; 0, 3/5, -4/5)$
 
 $A = Q R$
+
+== T4
+
+=== (1)
+
+由定义可知
+
+$norm(A)_2 = sqrt(lambda_(max)(A^T A)) = max(sigma) = sigma_1$
+
+=== (2)
+
+$norm(A^-1)_2 = sqrt(lambda_(max)[(A^(-1))^T A^(-1)]) = sqrt(lambda_(max) [(A A^T)^(-1)]) = sqrt(1 / (lambda_(min)(A^T A))) = 1 / min(sigma) = sigma_2$
+
+
+== T5
+
+$A^H A V = V V^H A^H U U^H A V = V (U^H A V) U^H A V = V mat(Sigma, 0;0,0)$
+
+故 $V$ 的列向量是 $A^H A$ 的特征向量
+
+$A A^H U = U U^H A V V^H A^H U = U U^H A V (U^H A V)^H = U mat(Sigma, 0;0,0)$
+
+故 $U$ 的列向量是 $A A^H$ 的特征向量
+
+== T6
+
+由定义可知
+
+$ norm(A)^2_F = tr(A^T A) = sum_(i=1)^r sigma_i^2 $
