@@ -81,3 +81,70 @@ $A A^H U = U U^H A V V^H A^H U = U U^H A V (U^H A V)^H = U mat(Sigma, 0;0,0)$
 由定义可知
 
 $ norm(A)^2_F = tr(A^T A) = sum_(i=1)^r sigma_i^2 $
+
+== T7
+
+$A^T A = mat(2,1;1,2), det(lambda I - A^T A) = (lambda - 1) (lambda - 3)$
+
+$lambda = 3$ 时，取单位化后的特征向量 $xi_1 = (1/sqrt(2), 1/sqrt(2))^T$
+
+$lambda = 1$ 时，取单位化后的特征向量 $xi_2 = (1/sqrt(2), -1/sqrt(2))^T$
+
+则 $V = (xi_1, xi_2) = mat(1/sqrt(2), 1/sqrt(2); 1/sqrt(2), -1/sqrt(2)), Sigma = mat(sqrt(3),;,1)$
+
+$U_1 = A V Sigma^(-1) = mat(1/sqrt(6), 1/sqrt(2); 1/sqrt(6), -1/sqrt(2); sqrt(2)/sqrt(3),0)$
+
+取 $U_2 = (1/sqrt(3), 1/sqrt(3), -1/sqrt(3))^T$ ，则 $U = (U_1, U_2)$
+
+$A = U mat(Sigma; O) V^T = mat(1/sqrt(6), 1/sqrt(2), 1/sqrt(3); 1/sqrt(6), -1/sqrt(2), 1/sqrt(3); sqrt(2)/sqrt(3), 0, -1/sqrt(3)) mat(sqrt(3), 0;0, 1; 0,0) mat(1/sqrt(2), 1/sqrt(2); 1/sqrt(2), -1/sqrt(2))$
+
+== T8
+
+$B = mat(A;A) in C^(2m times n)_r, B^H B = 2 A^H A$
+
+又 $V^H A^H A V = mat(Sigma^2, O; O, O) arrow.double 2 V^H A^H A V = V^H B^H B V = mat(2 Sigma^2, O; O, O)$
+
+记 $V = (V_1, V_2)$
+
+则有
+
+$B V_2 = O, V_2 in C^(n times (n - r))$
+
+$V_1^H B^H B V_1 = (sqrt(2) Sigma)^2$, 其中 $V_1 in C^(n times r)$
+
+$arrow.double sqrt(2)/2 Sigma^(-1) V_1^H B^H B V_1 sqrt(2)/2 Sigma^(-1) = I_r$
+
+记 $tilde(U_1) = sqrt(2)/2 B V_1 Sigma^(-1) in C^(2m times r)$
+
+则有 $tilde(U_1)^H tilde(U_1) = I_r, B V_1 = sqrt(2) tilde(U_1) Sigma$
+
+取 $tilde(U_2) in C^(2m times (2m - r)), tilde(U) = (tilde(U_1), tilde(U_2))$ 为 $2m$ 阶酉矩阵
+
+$tilde(U_2)^H tilde(U_1) = O, tilde(U_2)^H tilde(U_2) = I_(2m - r)$
+
+于是有
+
+$tilde(U)^H B V = mat(tilde(U_1)^H; tilde(U_2)^H) B (V_1, V_2) = mat(tilde(U_1)^H B V_1, tilde(U_1)^H B V_2; tilde(U_2)^H B V_1, tilde(U_2)^H B V_2) = mat(tilde(U_1)^H (sqrt(2) tilde(U_1) Sigma), O; tilde(U_2)^H (sqrt(2) tilde(U_1) Sigma), O) = mat(sqrt(2) Sigma, O; O, O)$
+
+$B = tilde(U) mat(sqrt(2) Sigma, O; O, O) V^H$
+
+== T9
+
+=== (1)
+
+$det(lambda I - A) = (lambda - 4) (lambda - 2)$
+
+$lambda = 4$ 时，取单位化后的特征向量 $xi_1 = (1/sqrt(2), 0, 1/sqrt(2))^T$
+
+$lambda = 2$ 时，取单位化后的特征向量 $xi_2 = (1/sqrt(2), 0, -1/sqrt(2))^T, xi_3 = (0, 1, 0)^T$
+
+$E_1 = xi_1 xi_1^T = mat(1/2, 0, 1/2;0,0,0;1/2, 0, 1/2)$
+
+$E_2 = xi_2 x_2^T + xi_3 xi_3^T = mat(1/2, 0, -1/2;0,0,0; -1/2, 0, 1/2) + mat(0,0,0;0,1,0;0,0,0) = mat(1/2, 0, -1/2;0,1,0; -1/2, 0, 1/2)$
+
+$A = 4 E_1 + 2 E_2$
+
+=== (2)
+
+
+
