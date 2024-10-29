@@ -68,7 +68,7 @@ $norm(A^-1)_2 = sqrt(lambda_(max)[(A^(-1))^T A^(-1)]) = sqrt(lambda_(max) [(A A^
 
 == T5
 
-$A^H A V = V V^H A^H U U^H A V = V (U^H A V) U^H A V = V mat(Sigma, 0;0,0)$
+$A^H A V = V V^H A^H U U^H A V = V (U^H A V)^H U^H A V = V mat(Sigma, 0;0,0)$
 
 故 $V$ 的列向量是 $A^H A$ 的特征向量
 
@@ -112,7 +112,7 @@ $B V_2 = O, V_2 in C^(n times (n - r))$
 
 $V_1^H B^H B V_1 = (sqrt(2) Sigma)^2$, 其中 $V_1 in C^(n times r)$
 
-$arrow.double sqrt(2)/2 Sigma^(-1) V_1^H B^H B V_1 sqrt(2)/2 Sigma^(-1) = I_r$
+$arrow.double sqrt(2) / 2 Sigma^(-1) V_1^H B^H B V_1 sqrt(2) / 2 Sigma^(-1) = I_r$
 
 记 $tilde(U_1) = sqrt(2)/2 B V_1 Sigma^(-1) in C^(2m times r)$
 
@@ -124,7 +124,9 @@ $tilde(U_2)^H tilde(U_1) = O, tilde(U_2)^H tilde(U_2) = I_(2m - r)$
 
 于是有
 
-$tilde(U)^H B V = mat(tilde(U_1)^H; tilde(U_2)^H) B (V_1, V_2) = mat(tilde(U_1)^H B V_1, tilde(U_1)^H B V_2; tilde(U_2)^H B V_1, tilde(U_2)^H B V_2) = mat(tilde(U_1)^H (sqrt(2) tilde(U_1) Sigma), O; tilde(U_2)^H (sqrt(2) tilde(U_1) Sigma), O) = mat(sqrt(2) Sigma, O; O, O)$
+$tilde(U)^H B V = mat(tilde(U_1)^H; tilde(U_2)^H) B (
+    V_1, V_2
+  ) = mat(tilde(U_1)^H B V_1, tilde(U_1)^H B V_2; tilde(U_2)^H B V_1, tilde(U_2)^H B V_2) = mat(tilde(U_1)^H (sqrt(2) tilde(U_1) Sigma), O; tilde(U_2)^H (sqrt(2) tilde(U_1) Sigma), O) = mat(sqrt(2) Sigma, O; O, O)$
 
 $B = tilde(U) mat(sqrt(2) Sigma, O; O, O) V^H$
 
@@ -146,5 +148,5 @@ $A = 4 E_1 + 2 E_2$
 
 === (2)
 
-
+$det(lambda I - A) = (lambda - 4) (lambda - 2) = lambda^3 - 19 lambda^2 + 112 lambda - 200$
 
