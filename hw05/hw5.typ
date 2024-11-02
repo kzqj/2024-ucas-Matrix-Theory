@@ -88,11 +88,15 @@ $mat(d_1^+,,;, dots.down,;,,d_n^+) mat(d_1,,;, dots.down,;,,d_n) mat(d_1^+,,;, d
 
 对于 (3) 有
 
-$(mat(d_1,,;, dots.down,;,,d_n) mat(d_1^+,,;, dots.down,;,,d_n^+))^H = mat(d_1,,;, dots.down,;,,d_n) mat(d_1^+,,;, dots.down,;,,d_n^+)$
+$(
+    mat(d_1,,;, dots.down,;,,d_n) mat(d_1^+,,;, dots.down,;,,d_n^+)
+  )^H = mat(d_1,,;, dots.down,;,,d_n) mat(d_1^+,,;, dots.down,;,,d_n^+)$
 
 对于 (4) 有
 
-$(mat(d_1^+,,;, dots.down,;,,d_n^+) mat(d_1,,;, dots.down,;,,d_n))^H = mat(d_1^+,,;, dots.down,;,,d_n^+) mat(d_1,,;, dots.down,;,,d_n)$
+$(
+    mat(d_1^+,,;, dots.down,;,,d_n^+) mat(d_1,,;, dots.down,;,,d_n)
+  )^H = mat(d_1^+,,;, dots.down,;,,d_n^+) mat(d_1,,;, dots.down,;,,d_n)$
 
 == T3
 
@@ -139,7 +143,7 @@ $B^+ = (V^H V_1) mat(Sigma^(-1), 0;0,0) (U U_1)^H = V^H (V_1 mat(Sigma^(-1), 0;0
 
 必要性：
 
-由 $H^+ = H$ 
+由 $H^+ = H$
 
 有 $(H^2)^2 = H^4 = H^3 H = H^2, (H^2)^H = (H H)^H = H^2$
 
@@ -153,8 +157,74 @@ $"rank"(H^2) = "rank"(H)$
 
 由 $"rank"(H^2) = "rank"(H)$ 可得存在矩阵 $P$ 使得 $H = H^2 U$
 
-则 $H^3 = H^2 H = (H^2)^2 U = H^2 U = H$ 
+则 $H^3 = H^2 H = (H^2)^2 U = H^2 U = H$
 
 于是 $H in {1, 2}$
 
 故 $H in {1, 2, 3, 4}$ 即 $H^+ = H$
+
+
+== T7
+
+由 $A^+ = A^H (A A^H)^+ = (A^H A)^+ A^H$ 有
+
+$A^+ A &= (A^H A)^+ A^H A = (A A^H)^+ A^H A \
+  &= (A A^H)^+ A A^H = [(A A^H)^+ A A^H]^H \
+  &= A A^H (A A^H)^+ = A A^+$
+
+于是有
+
+$A^n (A^+) A^n = (A A^+ A)^n = A^n$
+
+$(A^+)^n A^n (A^+)^n = (A^+ A A^+)^n = (A^+)^n$
+
+$[A^n (A^+)^n]^H = [(A A^+)^n]^H = [(A A^+)^H]^n = (A A^+)^n = A^n (A^+)^n$
+
+同理可证 $[(A^+)^n A^n]^H = (A^+)^n A^n$
+
+故 $(A^n)^+ = (A^+)^n$
+
+== T8
+
+由题意及 $A^+ = A^H (A A^H)^+ = (A^H A)^+ A^H$ 有
+
+$
+  sum_(i = 1)^(r) A_i sum_(i = 1)^(r) A_i^+ = sum_(i = 1)^(r) A_i (
+    sum_(i = 1)^(r) A_i^H (A_i A_i^H)^+
+  ) = sum_(i = 1)^(r) A_i A_i^H (A_i A_i^H)^+ = sum_(i = 1)^(r) A_i A_i^+
+$
+
+$
+  sum_(i = 1)^(r) A_i^+ sum_(i = 1)^(r) A_i = (
+    sum_(i = 1)^(r) (A_i^H A_i)^+ A_i^H
+  ) sum_(i = 1)^(r) A_i = sum_(i = 1)^(r) (A_i^H A_i)^+ A_i^H A_i = sum_(i = 1)^(r) A_i^+ A_i
+$
+
+又 $(A A^+)^H = A A^+, (A^+ A)^H = A^+ A$
+
+故 $  (sum_(i = 1)^(r) A_i sum_(i = 1)^(r) A_i^+)^H = sum_(i = 1)^(r) A_i A_i^+ = sum_(i = 1)^(r) A_i sum_(i = 1)^(r) A_i^+ $
+
+$
+  (sum_(i = 1)^(r) A_i^+ sum_(i = 1)^(r) A_i)^H = sum_(i = 1)^(r) A_i^+ A_i = sum_(i = 1)^(r) A_i^+ sum_(i = 1)^(r) A_i
+$
+
+$
+  sum_(i = 1)^(r) A_i sum_(i = 1)^(r) A_i^+ sum_(i = 1)^(r) A_i
+  &= sum_(i = 1)^(r) A_i A_i^+ sum_(i = 1)^(r) A_i \
+  &= (sum_(i = 1)^(r) A_i (A_i^H A_i)^+ A_i^H) sum_(i = 1)^(r) A_i \
+  &= sum_(i = 1)^(r) A_i (A_i^H A_i)^+ A_i^H A_i \
+  &= sum_(i = 1)^(r) A_i ((A_i^H A_i)^+ A_i^H) A_i \
+  &= sum_(i = 1)^(r) A_i A_i^+ A_i = sum_(i = 1)^(r) A_i
+$
+
+同理可证
+
+$
+  sum_(i = 1)^(r) A_i^+ sum_(i = 1)^(r) A_i sum_(i = 1)^(r) A_i^+ = sum_(i = 1)^(r) A_i^+
+$
+
+综上
+
+$
+  (sum_(i = 1)^(r) A_i)^+ = sum_(i = 1)^(r) A_i^+
+$
