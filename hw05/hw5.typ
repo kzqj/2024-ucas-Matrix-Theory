@@ -228,3 +228,32 @@ $
 $
   (sum_(i = 1)^(r) A_i)^+ = sum_(i = 1)^(r) A_i^+
 $
+
+== T9
+
+设 $X, Y$ 为满足这三个方程的解
+
+$X A X = D X = Y A X = Y B = Y A Y$
+
+故 $X = Y$, 矩阵解唯一
+
+== T10
+
+取 $ A in C^(m times n)_r$， 非奇异矩阵 $P in C^(m times m), Q in C^(n times n)$
+
+则有
+
+$
+  P A Q = mat(E_r, 0;0,0)
+$
+
+$
+  A^- = Q mat(E_r, G_(12);G_(21),G_(22)) P
+$
+
+在 $ m = n$ 时，取 $G_22 in C^((n - r) times (n - r))$ 的满秩矩阵，此时 $A^-$ 可逆
+
+故每个方阵有可逆的{1}-逆
+
+== T11
+
