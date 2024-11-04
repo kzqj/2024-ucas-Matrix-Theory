@@ -257,3 +257,64 @@ $
 
 == T11
 
+必要性：
+
+由定理可知 $x$ 是最小二乘解 $arrow.r.l.double$ $A^H A x = A^H b$
+
+取 $y = b - A x$
+
+则 $A^H y = A^H b - A^H A x = 0$
+
+于是 $vec(delim: "[", y, x)$ 是题目方程的解
+
+充分性：
+
+已知 $A^H y = 0$
+
+取 $y = b - A x$ ，可得 $A^H A x = A^H b$
+
+== T12
+
+$x$ 是 $min sum_(i = 1)^(k) norm(A_i x - b_i)^2$ 的解
+
+$arrow.r.l.double$ $x$ 是 $A_i x = b_i$ 的最小二乘解
+
+$arrow.r.l.double$ $x$ 是 $vec(delim: "[", A_1, dots.v, A_k) x = vec(delim: "[", b_1, dots.v, b_k)$ 的解
+
+$arrow.r.l.double$ $x$ 是 $vec(delim: "[", A_1, dots.v, A_k)^H vec(delim: "[", A_1, dots.v, A_k) x = vec(delim: "[", A_1, dots.v, A_k)^H vec(delim: "[", b_1, dots.v, b_k)$ 的解
+
+$arrow.r.l.double$ $x$ 是 $(sum_(i = 1)^k A_i^H A_i) x = sum_(i = 1)^k A_i^H b_i$ 的解
+
+== T13
+
+原问题
+$
+  min_(A x = b) norm(x - a)
+$
+
+等价于求解 $A (x -a) = b - A a$ 的极小范数解
+
+由定理可知 $ x - a = A^((1, 4)) (b - A a)$
+
+$arrow.double.r x = A^((1, 4)) b + (I - A^((1, 4)) A)$
+
+
+== T14
+
+=== (1)
+
+对 $A$ 进行变换可求得 $Q = mat(1,0,0,0;-1,1,0,0;1,-1,1,0;-1,1,-1,1), P = mat(1,0,0,-1;0,1,0,0;0,0,1,0;0,0,0,1)$
+
+取一个$A^((1)) = Q mat(E_r,0;0,0) P = mat(1,0,0,0;-1,1,0,0;1,-1,1,0;0,0,0,0)$
+
+满足 $A A^((1)) b = b$ 所以方程相容
+
+通解为 $x = A^((1)) b + (I - A^(1) A) y = vec(1,0,1,0) + vec(-1, 1, -1 , 1)y$， 其中 $y in C^4$ 任意
+
+极小范数解为 $x = A^((1,4)) b$
+
+=== (2)
+
+$A A^((1)) b eq.not b$ 方程不相容
+
+极小范数最小二乘解 $x = A^(+) b = $
