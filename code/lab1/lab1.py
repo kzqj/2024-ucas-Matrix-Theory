@@ -1,16 +1,18 @@
 import numpy as np
+from sympy import Matrix as sy_matrix
+
+
+def matrix_check(A: np.ndarray):
+    if A.shape[0] != A.shape[1] or np.linalg.matrix_rank(A) < A.shape[0]:
+        out_put = f"A 必须为非奇异矩阵: {'行数与列数不相等' if A.shape[0] != A.shape[1] else "行列式为零"}"
+        raise ValueError(out_put)
 
 
 def qr_decomp_givens(A: np.ndarray):
     print(f"输入的矩阵为: \n{A}")
-
+    matrix_check(A)
     row = A.shape[0]
     col = A.shape[1]
-    if row != col or np.linalg.matrix_rank(A) < row:
-        out_put = (
-            f"A 必须为非奇异矩阵: {'行数与列数不相等' if row != col else "行列式为零"}"
-        )
-        raise ValueError(out_put)
 
     matrix_q = np.identity(row).astype(np.float64)
     matrix_r = A.copy().astype(np.float64)
@@ -48,14 +50,9 @@ def qr_decomp_givens(A: np.ndarray):
 
 def qr_decomp_householder(A: np.ndarray):
     print(f"输入的矩阵为: \n{A}")
-
+    matrix_check(A)
     row = A.shape[0]
     col = A.shape[1]
-    if row != col or np.linalg.matrix_rank(A) < row:
-        out_put = (
-            f"A 必须为非奇异矩阵: {'行数与列数不相等' if row != col else "行列式为零"}"
-        )
-        raise ValueError(out_put)
 
     matrix_q = np.identity(row).astype(np.float64)
     matrix_r = A.copy().astype(np.float64)
@@ -89,10 +86,34 @@ def qr_decomp_householder(A: np.ndarray):
     return matrix_q, matrix_r
 
 
+def full_rank_decompose(A: np.ndarray):
+    print(f"输入的矩阵为: \n{A}")
+
+    A_sympy = sy_matrix(A.tolist())
+    # 行最简矩阵
+    A_rref = np.array(A_sympy.rref()[0].tolist(), dtype=np.float64)
+    A_rank = np.linalg.matrix_rank(A)
+
+    tgt_col = []
+    for i in range(A_rref.shape[0]):
+        for j in range(A_rref.shape[1]):
+            if A_rref[i][j] == 1:
+                tgt_col.append(j)
+                break
+    matrix_f = A[:, tgt_col]
+    matrix_g = A_rref[:A_rank]
+
+    print("===满秩分解结果为===")
+    print(f"F矩阵为: \n{matrix_f}")
+    print(f"G矩阵为: \n{matrix_g}")
+
+
 def main():
     a = np.array([[2, -1, -2], [-4, 6, 3], [-4, -2, 8]])
-    qr_decomp_householder(a)
-    qr_decomp_givens(a)
+    # a = np.array([[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]])
+    # qr_decomp_householder(a)
+    # qr_decomp_givens(a)
+    full_rank_decompose(a)
 
 
 if __name__ == "__main__":
