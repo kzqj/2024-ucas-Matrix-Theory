@@ -107,13 +107,60 @@ def full_rank_decompose(A: np.ndarray):
     print(f"F矩阵为: \n{matrix_f}")
     print(f"G矩阵为: \n{matrix_g}")
 
+    return matrix_f, matrix_g
+
+
+# 题目中的 P置换 就是把偶数索引放前面，奇数索引放后面
+# 矩阵形式的置换就是行列分别进行置换
+def rearrange_matrix(
+    A: np.ndarray, row_transform_nums: int = 1, col_transform_nums: int = 1
+):
+    ret = A.copy()
+    for _ in range(row_transform_nums):
+        ret = np.concatenate([ret[::2], ret[1::2]], axis=0)
+    for _ in range(col_transform_nums):
+        ret = np.concatenate([ret[:, ::2], ret[:, 1::2]], axis=1)
+    return ret
+
+
+def get_delta(A: np.ndarray, t: int):
+    svd_vals = np.linalg.svdvals(A)
+    if t > len(svd_vals):
+        raise ValueError("计算delta时 t > len(svd_vals)")
+    return svd_vals[:t].sum() / svd_vals.sum()
+
+
+def get_ratio(A: np.ndarray):
+    return np.log(A.max() / (A.min() + 1e-10))
+
+
+def question4(
+    X: np.ndarray,
+    t: int,
+    row_transform_nums: int = 1,
+    col_transform_nums: int = 1,
+):
+    print(f"输入的矩阵为: \n{X}")
+
+
+    Y = rearrange_matrix(X, row_transform_nums, col_transform_nums)
+    print(f"置换后的矩阵为: \n{Y}")
+    print(f"置换前X的delta: {get_delta(X, t)}")
+    print(f"置换前X的最大元素和最小元素的比值: {get_ratio(X)}")
+    print(f"置换后Y的delta: {get_delta(Y, t)}")
+    print(f"置换后Y的最大元素和最小元素的比值: {get_ratio(Y)}")
+
 
 def main():
     a = np.array([[2, -1, -2], [-4, 6, 3], [-4, -2, 8]])
     # a = np.array([[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]])
     # qr_decomp_householder(a)
     # qr_decomp_givens(a)
-    full_rank_decompose(a)
+    # full_rank_decompose(a)
+    # X = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
+    # np.random.default_rng()
+    X = np.random.randint(0, 255, (32, 32))
+    question4(X, 16, 3, 3)
 
 
 if __name__ == "__main__":
