@@ -106,6 +106,7 @@ def full_rank_decompose(A: np.ndarray):
     print("===满秩分解结果为===")
     print(f"F矩阵为: \n{matrix_f}")
     print(f"G矩阵为: \n{matrix_g}")
+    print(f"F矩阵与G矩阵相乘的结果为: \n{matrix_f @ matrix_g}")
 
     return matrix_f, matrix_g
 
@@ -144,8 +145,6 @@ def transformX2Y(
     print(
         f"置换后(行 {row_transform_nums} 次 列 {col_transform_nums} 次)的矩阵为: \n{Y}"
     )
-    print(f"置换前X的delta: {get_delta(X, t)}")
-    print(f"置换前X的最大元素和最小元素的比值: {get_ratio(X)}")
     print(f"置换后Y的delta: {get_delta(Y, t)}")
     print(f"置换后Y的最大元素和最小元素的比值: {get_ratio(Y)}")
 
@@ -157,6 +156,8 @@ def question4(
     col_transform_list: list[int] = [1],
 ):
     print(f"输入的矩阵为: \n{X}")
+    print(f"置换前X的delta: {get_delta(X, t)}")
+    print(f"置换前X的最大元素和最小元素的比值: {get_ratio(X)}")
     for row_transform_nums in row_transform_list:
         for col_transform_nums in col_transform_list:
             transformX2Y(X, t, row_transform_nums, col_transform_nums)
@@ -164,13 +165,11 @@ def question4(
 
 def main():
     a = np.array([[2, -1, -2], [-4, 6, 3], [-4, -2, 8]])
-    # a = np.array([[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]])
-    # qr_decomp_householder(a)
     # qr_decomp_givens(a)
+    # qr_decomp_householder(a)
+    # a = np.array([[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]])
     # full_rank_decompose(a)
-    # X = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
-    # np.random.default_rng()
-    X = np.random.randint(0, 255, (32, 32))
+    X = np.random.randint(0, 31, (32, 32))
     question4(X, 16, [1, 2], [1, 2, 3])
 
 
