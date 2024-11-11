@@ -134,21 +134,32 @@ def get_ratio(A: np.ndarray):
     return np.log(A.max() / (A.min() + 1e-10))
 
 
-def question4(
+def transformX2Y(
     X: np.ndarray,
     t: int,
     row_transform_nums: int = 1,
     col_transform_nums: int = 1,
 ):
-    print(f"输入的矩阵为: \n{X}")
-
-
     Y = rearrange_matrix(X, row_transform_nums, col_transform_nums)
-    print(f"置换后的矩阵为: \n{Y}")
+    print(
+        f"置换后(行 {row_transform_nums} 次 列 {col_transform_nums} 次)的矩阵为: \n{Y}"
+    )
     print(f"置换前X的delta: {get_delta(X, t)}")
     print(f"置换前X的最大元素和最小元素的比值: {get_ratio(X)}")
     print(f"置换后Y的delta: {get_delta(Y, t)}")
     print(f"置换后Y的最大元素和最小元素的比值: {get_ratio(Y)}")
+
+
+def question4(
+    X: np.ndarray,
+    t: int,
+    row_transform_list: list[int] = [1],
+    col_transform_list: list[int] = [1],
+):
+    print(f"输入的矩阵为: \n{X}")
+    for row_transform_nums in row_transform_list:
+        for col_transform_nums in col_transform_list:
+            transformX2Y(X, t, row_transform_nums, col_transform_nums)
 
 
 def main():
@@ -160,7 +171,7 @@ def main():
     # X = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
     # np.random.default_rng()
     X = np.random.randint(0, 255, (32, 32))
-    question4(X, 16, 3, 3)
+    question4(X, 16, [1, 2], [1, 2, 3])
 
 
 if __name__ == "__main__":
