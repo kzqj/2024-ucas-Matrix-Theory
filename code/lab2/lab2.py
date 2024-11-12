@@ -44,7 +44,12 @@ def get_col_spaces_intersection(A: np.ndarray, B: np.ndarray):
         raise ValueError("A and B must have same number of rows")
     ua_col_space = get_null_space(A.T)
     ub_col_space = get_null_space(B.T)
-    ret = get_null_space(np.concatenate([ua_col_space.T, ub_col_space.T], axis=0))
+    if ua_col_space.shape[0] == 0 or ub_col_space.shape[0] == 0:
+        ret = np.zeros((A.shape[0], 1))
+    else:
+        ret = get_null_space(np.concatenate([ua_col_space.T, ub_col_space.T], axis=0))
+        if ret.shape[0] == 0:
+            ret = np.zeros((A.shape[0], 1))
     print(f"A和B列空间的交为: \n{ret}")
     return ret
 
@@ -87,11 +92,10 @@ def question3(A: np.ndarray, x1: np.ndarray, seq_len: int = 1):
 
 
 def main():
-    A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-    A = np.array([[1, 2, 3, 4], [2, 4, 6, 8], [3, 6, 9, 12]])
-    get_matrix_two_spaces(A)
-    B = np.array([[1, 2, 3, 4], [2, 4, 6, 8], [3, 6, 9, 12]])
-    get_col_spaces_intersection(A, B)
+    # A = np.array([[1, 2, 3, 4], [2, 4, 6, 8], [3, 6, 9, 12]])
+    # get_matrix_two_spaces(A)
+    # B = np.array([[1, 4], [2, 8], [3, 12]])
+    # get_col_spaces_intersection(A, B)
     A = np.array([[0, 0, 1], [1, 0, 0], [0, 1, 0]])
     x1 = np.array([1, 2, 0])
     question3(A, x1, 3)
