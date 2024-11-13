@@ -8,6 +8,7 @@ def matrix_check(A: np.ndarray):
         raise ValueError(out_put)
 
 
+# T1
 def qr_decomp_givens(A: np.ndarray):
     print(f"输入的矩阵为: \n{A}")
     matrix_check(A)
@@ -48,6 +49,7 @@ def qr_decomp_givens(A: np.ndarray):
     return matrix_q, matrix_r
 
 
+# T2
 def qr_decomp_householder(A: np.ndarray):
     print(f"输入的矩阵为: \n{A}")
     matrix_check(A)
@@ -86,22 +88,16 @@ def qr_decomp_householder(A: np.ndarray):
     return matrix_q, matrix_r
 
 
+# T3
 def full_rank_decompose(A: np.ndarray):
     print(f"输入的矩阵为: \n{A}")
 
     A_sympy = sy_matrix(A.tolist())
     # 行最简矩阵
-    A_rref = np.array(A_sympy.rref()[0].tolist(), dtype=np.float64)
-    A_rank = np.linalg.matrix_rank(A)
-
-    tgt_col = []
-    for i in range(A_rref.shape[0]):
-        for j in range(A_rref.shape[1]):
-            if A_rref[i][j] == 1:
-                tgt_col.append(j)
-                break
-    matrix_f = A[:, tgt_col]
-    matrix_g = A_rref[:A_rank]
+    reduced, pivots = A_sympy.rref()
+    reduced = np.array(reduced).astype(np.float64)
+    matrix_f = A[:, pivots]
+    matrix_g = reduced[: len(pivots)]
 
     print("===满秩分解结果为===")
     print(f"F矩阵为: \n{matrix_f}")
@@ -149,6 +145,7 @@ def transformX2Y(
     print(f"置换后Y的最大元素和最小元素的比值: {get_ratio(Y)}")
 
 
+# T4
 def question4(
     X: np.ndarray,
     t: int,
@@ -167,10 +164,10 @@ def main():
     a = np.array([[2, -1, -2], [-4, 6, 3], [-4, -2, 8]])
     # qr_decomp_givens(a)
     # qr_decomp_householder(a)
-    # a = np.array([[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]])
-    # full_rank_decompose(a)
-    X = np.random.randint(0, 31, (32, 32))
-    question4(X, 16, [1, 2], [1, 2, 3])
+    a = np.array([[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]])
+    full_rank_decompose(a)
+    # X = np.random.randint(0, 31, (32, 32))
+    # question4(X, 16, [1, 2], [1, 2, 3])
 
 
 if __name__ == "__main__":
