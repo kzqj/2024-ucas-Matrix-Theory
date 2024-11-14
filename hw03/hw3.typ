@@ -67,7 +67,7 @@ $A_2 = mat(a, c, 0, 0; b, d, 0, 0; 0, 0, a, c; 0, 0, b, d;)$
 
 由$T_1 X = X A_1, T_2 X = X A_2$, 有
 
-$T_3 X = (T_1 compose T_2) X = X A_3 arrow.double T_3 X = T_2 (T_1 X) = T_2 (
+$T_3 X = (T_2 compose T_1) X = X A_3 arrow.double T_3 X = T_2 (T_1 X) = T_2 (
     X A_1
   ) = X A_1 A_2 arrow.double A_3 = A_1 A_2$
 
@@ -114,11 +114,15 @@ $arrow.double C = (x_1, x_2, x_3)^(-1) (y_1, y_2, y_3) =
 
 $T (x_1, x_2, x_3) = (y_1, y_2, y_3) = (x_1, x_2, x_3) C$
 
-$T$ 在基 $x_1, x_2, x_3$ 下的过渡矩阵为 $C$
+$T$ 在基 $x_1, x_2, x_3$ 下的矩阵为 $C$
 
 === (3)
 
-$T$ 在基 $y_1, y_2, y_3$ 下的过渡矩阵为 $C^(-1) C C = C$
+令 $A'$ 为 $T$ 在基 $y_1, y_2, y_3$ 下的矩阵
+
+$T Y = T X C = X C C = Y C$
+
+$T$ 在基 $y_1, y_2, y_3$ 下的过渡矩阵为 $A' = C$
 
 == T6
 
@@ -141,6 +145,8 @@ $lambda_2 = lambda_3 = 1 , eta_2 = X xi_2 = k_2 (3 x_1 - 6 x_2 + 20 x_3) , k_2 e
 
 == T7
 
+方法一:
+
 $det(lambda I - A) = mat(delim: "|", lambda + 1, -1, 0; 4, lambda - 3, 0; -1, 0, lambda - 2 ) = (lambda - 2) (
     lambda - 1
   )^2$
@@ -151,7 +157,7 @@ $det(lambda I - A) = mat(delim: "|", lambda + 1, -1, 0; 4, lambda - 3, 0; -1, 0,
 
 可得 $P_3 = (p_1, p_2, p_3) = mat(0, 1, 0; 0, 0, 1; 1, 0, 0)$
 
-$A P_3 = P_3 mat(2, 1, 0; 0, -1, 1; 0, -4, 3)$
+$A P_3 = mat(0,-1,1;0,-4,3;2,1,0) = P_3 mat(2, 1, 0; 0, -1, 1; 0, -4, 3)$
 
 记 $A_2 = mat(-1, 1; -4, 3), det(lambda I - A_2) = (lambda - 1)^2$
 
@@ -169,6 +175,16 @@ $A = P_3 mat(2, 1, 0; 0, -1, 1; 0, -4, 3) P_3^(-1)
   = tilde(P_3) mat(2, 1, 0; 0, 1, 1 ; 0, 0, 1 ) tilde(P_3)^(-1)$
 
 其中 $tilde(P_3) = P_3 mat(1, ; , P_2) = mat(0, 1, 0; 0, 2, 1; 1, 0, 0)$
+
+方法二:
+
+由特征值可知，矩阵 $#text("Jordan")$ 标准型只可能为 $mat(2,0,0;0,1,0;0,0,1)$ 和 $mat(2,0,0;0,1,1;0,0,1)$
+
+又 $r a n k (I - A) = 2$
+
+故 $A$ 的 $#text("Jordan")$ 标准型为 $mat(2,0,0;0,1,1;0,0,1)$
+
+所以 $A dash.wave mat(2,0,0;0,1,1;0,0,1)$
 
 == T8
 
