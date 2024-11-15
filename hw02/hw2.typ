@@ -50,39 +50,74 @@ $arrow.r.double (1 + |A|^2) |A + B| = 0 arrow.r.double |A + B| = 0$
 
 == T4 <T4>
 
+要证两个子空间同构，只需证存在一个双射的线性映射 $T$
+
 设 $alpha_1, alpha_2, ... , alpha_m$ 生成的子空间为 $V_1$ , $beta_1, beta_2, ... , beta_m$ 生成的子空间为 $V_2$
 
-设线性映射 $T$ 使得 $T (alpha_i) = beta_i$
+设映射 $T$ 使得 $T (alpha_i) = beta_i$
 
 对于$forall x in V_1, x = k_1 alpha_1 +k_2 alpha_2 + ... + k_m alpha_m$
 
-则 $T(x) = k_1 T(alpha_1) + k_2 T(alpha_2) + ... + k_m T(alpha_m) = k_1 beta_1 + k_2 beta_2 + ... + k_m beta_m$
+则 $T(x) = k_1 beta_1 + k_2 beta_2 + ... + k_m beta_m $
 
-所以 $T$ 保持线性关系
+所以 $T$ 是线性的
 
-下证内积不变
+下证 $T$ 是单射：
 
-$forall x, y in V_1, x = k_1 alpha_1 +k_2 alpha_2 + ... + k_m alpha_m , y = c_1 alpha_1 +c_2 alpha_2 + ... + c_m alpha_m$
+设 $x = k_1 alpha_1 +k_2 alpha_2 + ... + k_m alpha_m$, 且 $T (x) = 0$
+
+则 $k_1 beta_1 + k_2 beta_2 + ... + k_m beta_m = 0$
+
+对于任意 $j = 1, dots, m$, 两边同时与 $beta_j$ 做内积，有
 
 $
-  angle.l x, y angle.r
-  &=
-  angle.l k_1 alpha_1 +k_2 alpha_2 + ... + k_m alpha_m, c_1 alpha_1 +c_2 alpha_2 + ... + c_m alpha_m angle.r \
-  &= k_1 c_1 angle.l alpha_1, alpha_1 angle.r + k_2 c_2 angle.l alpha_2, alpha_2 angle.r + ... + k_m c_m angle.l alpha_m, alpha_m angle.r
-  \
-  angle.l T(x), T(y) angle.r
-  &= angle.l k_1 beta_1 + k_2 beta_2 + ... + k_m beta_m, c_1 beta_1 + c_2 beta_2 + ... + c_m beta_m angle.r \
-  &= k_1 c_1 angle.l beta_1, beta_1 angle.r + k_2 c_2 angle.l beta_2, beta_2 angle.r + ... + k_m c_m angle.l beta_m, beta_m angle.r
+  (k_1 beta_1 + k_2 beta_2 + ... + k_m beta_m, beta_j) = 0 \
+  k_1 (beta_1, beta_j) + k_2 (beta_2, beta_j) + ... + k_m (beta_m, beta_j) = 0
 $
 
-由$angle.l alpha_i, alpha_j angle.r = angle.l beta_i, beta_j angle.r$, 可得
-$angle.l x, y angle.r = angle.l T(x), T(y) angle.r$
+又 $(alpha_i, alpha_j) = (beta_i, beta_j)$, 所以
 
-于是 $T$ 是从 $V_1$ 到 $V_2$ 的同构映射，即 $V_1$ 和 $V_2$ 同构
+$
+  k_1 (alpha_1, alpha_j) + k_2 (alpha_2, alpha_j) + ... + k_m (alpha_m, alpha_j) = 0 \
+  (k_1 alpha_1 + k_2 alpha_2 + ... + k_m alpha_m, alpha_j) = 0 \
+  (x, alpha_j) = 0
+$
+
+可得 $x$ 与 $alpha_j$ 正交
+
+$x$ 是 $alpha_1, alpha_2, ... , alpha_m$ 的线性组合，且与 $alpha_j$ 正交
+
+故 $x = 0$
+
+$T (x) = 0$, 当且仅当 $x = 0$, 故 $T$ 是单射
+
+(这里用到定理: $T$ 是单射 $arrow.l.r.double$ $N (T) = {0}$)
+
+下证 $T$ 是满射：
+
+由于 $T (alpha_i) = beta_i$， $beta_1, beta_2, ... , beta_m$ 均在 $T$ 的像空间
+
+综上，$T$ 是线性的，双射的，故 $T$ 是一个同构映射，所以两个子空间同构
 
 == T5
 
-由 #link(<T4>)[T4] 证明过程可知，$T$ 是从 $V_1$ 到 $V_2$ 的正交变换
+必要性:
+
+正交变换保持向量内积， 所以 $forall x, y in V$
+
+$(sigma(x), sigma(y)) = (x, y)$
+
+所以 $(alpha_i, alpha_j) = (sigma(alpha_i), sigma(alpha_j)) = (beta_i, beta_j)$
+
+充分性:
+
+设 $alpha_1, alpha_2, ... , alpha_m$ 生成的子空间为 $V_1$ , $beta_1, beta_2, ... , beta_m$ 生成的子空间为 $V_2$
+
+由于 $(alpha_i, alpha_j) = (beta_i, beta_j)$, 所以 $alpha_1, alpha_2, ... , alpha_m$ 和 $beta_1, beta_2, ... , beta_m$ 是等距等角的基(???)
+
+因此，存在正交变换 $sigma$ 使得 $sigma(alpha_i) = beta_i$
+
+$$
 
 == T6
 
