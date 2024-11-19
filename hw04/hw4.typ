@@ -63,7 +63,7 @@ $norm(A)_2 = sqrt(lambda_(max)(A^T A)) = max(sigma) = sigma_1$
 
 === (2)
 
-$norm(A^-1)_2 = sqrt(lambda_(max)[(A^(-1))^T A^(-1)]) = sqrt(lambda_(max) [(A A^T)^(-1)]) = sqrt(1 / (lambda_(min)(A^T A))) = 1 / min(sigma) = sigma_2$
+$norm(A^(-1))_2 = sqrt(lambda_(max)[(A^(-1))^T A^(-1)]) = sqrt(lambda_(max) [(A A^T)^(-1)]) = sqrt(1 / (lambda_(min)(A^T A))) = 1 / min(sigma) = sigma_2$
 
 
 == T5
@@ -148,5 +148,5 @@ $A = 4 E_1 + 2 E_2$
 
 === (2)
 
-$det(lambda I - A) = (lambda - 4) (lambda - 2) = lambda^3 - 19 lambda^2 + 112 lambda - 200$
+$det(lambda I - A) =  lambda^3 - 19 lambda^2 + 112 lambda - 200$
 
