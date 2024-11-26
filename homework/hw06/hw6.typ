@@ -56,9 +56,9 @@ $
   norm(A)_2 = 6 \
   norm(B)_1 = 4 \
   norm(B)_2 = 6 \
-  B^H B = mat(2, -2j, -2j;-2j, 4, 6;-2j, 6, 8) \
-  det(lambda I - B^H B) = \
-  norm(B)_2 =
+  B^H B = mat(2, 2j, 4j;-2j, 4, 6;-4j, 6, 10) \
+  det(lambda I - B^H B) = lambda (lambda - (8 + 2 sqrt(13))) (lambda - (8 - 2 sqrt(13))) \
+  norm(B)_2 = 8 + 2 sqrt(13)
 $
 
 == T5
@@ -97,7 +97,7 @@ $norm(A + B) = norm(S^(-1) (A + B) S)_M = norm(S^(-1) A S + S^(-1) B S)_M lt.eq 
 
 相容性:
 
-$norm(A B) = norm(S^(-1) A B S)_M  = norm(S^(-1) A S S^(-1) B S)_M lt.eq  norm(S^(-1) A S)_M norm(S^(-1) B S)_M = norm(A) norm(B)$
+$norm(A B) = norm(S^(-1) A B S)_M = norm(S^(-1) A S S^(-1) B S)_M lt.eq norm(S^(-1) A S)_M norm(S^(-1) B S)_M = norm(A) norm(B)$
 
 综上, $norm(A)$ 是一个矩阵范数
 
