@@ -105,4 +105,40 @@ $(e^(A t))' = A e^(A t)$
 
 于是有 $A = (e^(A t))'|_(t=0) = mat(2 e^t, 0, 2 e^t - 4 e^(2 t);0, e^t, 0; 2 e^(2 t) - e^t,0, 4 e^(2 t)- e^t) stretch(|, size: #300%)_(t=0) = mat(2,0,-2;0,1,0;1,0,3)$
 
+== T13
 
+$
+  integral_0^1 sin A t dif t = mat(integral_0^1 sin a_(11)(t) dif t, integral_0^1 sin a_(12)(t) dif t, integral_0^1 sin a_(13)(t) dif t;
+  integral_0^1 sin a_(21)(t) dif t, integral_0^1 sin a_(22)(t) dif t, integral_0^1 sin a_(23)(t) dif t;
+  integral_0^1 sin a_(31)(t) dif t, integral_0^1 sin a_(32)(t) dif t, integral_0^1 sin a_(33)(t) dif t;
+  )
+$
+
+== T14
+
+$A(t) (A(t))^(-1) = I$，两端求导得
+
+$
+  d(A(t)) / (d t) (A(t))^(-1) + A(t) d(A(t))^(-1) / (d t) = 0 \
+  arrow.r.double d((A(t))^(-1)) / (d t)= - (A(t))^(-1) d(A(t)) / (d t) (A(t))^(-1) \
+$
+
+== T15
+
+已知 $frac(partial a^T x, partial x) = a, frac(partial x^T A x, partial x) = 2 A x$
+
+$(x-u)^T A (x-u) = x^T A x - 2 (A u)^T x + u^T A u$, 则
+
+$frac(dif ((x-u)^T A (x-u)),dif x) = frac(dif (x^T A x - 2 (A u)^T x + u^T A u),dif x) = 2 A x - 2 A u = 2 A (x - u)$
+
+== T16
+
+由题意
+
+$frac(partial f, partial xi_i) = (frac(partial f_1, partial xi_i), dots, frac(partial f_n, partial xi_i)) = (
+    a_(1 i), dots, a_(n i)
+  ) = a_i$
+
+$arrow.r.double frac(partial f, partial x^T) = (frac(partial f, partial xi_1), dots, frac(partial f, partial xi_n)) = (
+    a_1, dots, a_n
+  )$
