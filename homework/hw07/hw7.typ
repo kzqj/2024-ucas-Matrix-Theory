@@ -142,3 +142,59 @@ $frac(partial f, partial xi_i) = (frac(partial f_1, partial xi_i), dots, frac(pa
 $arrow.r.double frac(partial f, partial x^T) = (frac(partial f, partial xi_1), dots, frac(partial f, partial xi_n)) = (
     a_1, dots, a_n
   )$
+
+
+== T17
+
+$det X = limits(sum)_(p_1, p_2, dots, p_n) (-1)^tau xi_(1 p_1),xi_(2 p_2), dots, xi_(n p_n)$
+
+其中, $p_1, p_2, dots, p_n$ 是 $1, 2, dots, n$ 的一个排列，$tau$ 是该排列的逆序数
+
+则 $frac(dif, dif t)(det X) = limits(sum)_(i = 1)^n limits(sum)_(p_1, p_2, dots, p_n) (-1)^tau xi_(1 p_1),xi_(2 p_2), dots, xi_(n p_n)$
+
+又 $xi_(1 p_1) = a_(i 1) xi_(1 p_i) + a_(i 2) xi_(2 p_i) + dots + a_(i n) xi_(n p_i)$
+
+当 $k eq.not i$ 时，$limits(sum)_(p_1, p_2, dots, p_n) (-1)^tau xi_(1 p_1),xi_(2 p_2), dots, xi_(n p_n)$ 的第 $i$ 行与 $k$ 行对应元素成比例，该行列式为0，于是
+
+$frac(dif, dif t)(det X) =(tr A)(det X)$
+
+即 $dif (det X) =(tr A)(det X) dif t$
+
+积分后得 $det X = c e^(integral_(t_0)^t (tr A) dif t)$
+
+== T18
+
+$A = mat(3,0,8;3,-1,6;-2,0,-5), x(0) = vec(1,1,1)$
+
+$abs(lambda I - A) = (lambda + 1)^3, r (-I - A) = 1$，则 $m (lambda) = (lambda + 1)^2$
+
+设 $f(lambda) = q(lambda) m(lambda) + b_1 lambda + b_0$,则
+
+$
+  cases(
+    b_0 - b_1 = e^(-t),
+    b_1 = t e^(-t)
+  )
+$
+
+解得
+
+$
+  cases(
+    b_0  = (1 + t) e^(-t),
+    b_1 = t e^(-t)
+  )
+$
+
+故 $e^(A t) = b_0 I + b_1 A = e^(-t) mat(1+4t, 0, 8t;3t,1,6t;-2t,0,1-4t)$
+
+$x(t) = e^(A t) x(0) = e^(-t) vec(1+12t,1+9t,1-6t)$
+
+
+== T19
+
+$t - a = e^u$， 则
+
+$frac(dif X, dif u) = frac(dif X, dif t) frac(dif t, dif u) = (A X) / (t-a) (t-a) = A X$
+
+通解为 $X(t) = C e^(A ln (t-a)) = C (t-a)^A$
